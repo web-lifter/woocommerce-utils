@@ -1,0 +1,22 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create zip
+        run: |
+          mkdir -p build
+          zip -r build/woocommerce-utils.zip . -x '*.git*' '*.github*' 'build*'
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/woocommerce-utils.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

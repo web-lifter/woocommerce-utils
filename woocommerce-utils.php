@@ -23,11 +23,9 @@ if ( ! defined( 'WC_UTILS_PATH' ) ) {
 if ( ! defined( 'WC_UTILS_URL' ) ) {
     define( 'WC_UTILS_URL', plugin_dir_url( __FILE__ ) );
 }
-if ( ! defined( 'WC_UTILS_REPO_RAW' ) ) {
-    define( 'WC_UTILS_REPO_RAW', 'https://raw.githubusercontent.com/web-lifter/woocommerce-utils/main/' );
-}
-if ( ! defined( 'WC_UTILS_REPO_ZIP' ) ) {
-    define( 'WC_UTILS_REPO_ZIP', 'https://github.com/web-lifter/woocommerce-utils/archive/refs/heads/main.zip' );
+// GitHub repository slug used for updates.
+if ( ! defined( 'WC_UTILS_GITHUB_REPO' ) ) {
+    define( 'WC_UTILS_GITHUB_REPO', 'web-lifter/woocommerce-utils' );
 }
 
 /**
@@ -48,7 +46,7 @@ function wc_utils_init() {
     // Initialize classes.
     new WC_Utils_Admin();
     new WC_Utils_Features();
-    new WC_Utils_Updater( WC_UTILS_REPO_RAW, WC_UTILS_REPO_ZIP, plugin_basename( __FILE__ ), WC_UTILS_VERSION );
+    new WC_Utils_Updater( WC_UTILS_GITHUB_REPO, plugin_basename( __FILE__ ), WC_UTILS_VERSION );
 }
 add_action( 'plugins_loaded', 'wc_utils_init' );
 
