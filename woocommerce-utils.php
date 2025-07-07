@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Utils
  * Description: Provides helpful utilities for WooCommerce.
- * Version: 1.0.0
+ * Version: 1.0.3
  * Author: Web Lifter
  * Text Domain: woocommerce-utils
  * Domain Path: /languages
