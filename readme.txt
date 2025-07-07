@@ -1,5 +1,5 @@
 === WooCommerce Utils ===
-Contributors: example
+Contributors: John O'Connor
 Tags: woocommerce, utilities
 Requires at least: 5.0
 Tested up to: 6.4
