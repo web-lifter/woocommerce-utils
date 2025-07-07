@@ -11,6 +11,7 @@ class WC_Utils_Features {
     public function __construct() {
         add_filter( 'wc_order_statuses', array( $this, 'register_order_status' ) );
         add_action( 'init', array( $this, 'add_order_status' ) );
+        add_action( 'add_meta_boxes', array( $this, 'add_order_meta_box' ) );
     }
 
     /**
@@ -41,5 +42,39 @@ class WC_Utils_Features {
         }
 
         return $new_order_statuses;
+    }
+
+    /**
+     * Add a meta box showing all order meta values.
+     */
+    public function add_order_meta_box() {
+        add_meta_box(
+            'wc-utils-order-meta',
+            __( 'Order Meta Fields', 'woocommerce-utils' ),
+            array( $this, 'render_order_meta_box' ),
+            'shop_order',
+            'normal',
+            'default'
+        );
+    }
+
+    /**
+     * Render the order meta box.
+     *
+     * @param WP_Post $post Order post object.
+     */
+    public function render_order_meta_box( $post ) {
+        $order = wc_get_order( $post->ID );
+        if ( ! $order ) {
+            return;
+        }
+
+        echo '<table class="widefat striped"><tbody>';
+        foreach ( $order->get_meta_data() as $meta ) {
+            $key   = esc_html( $meta->key );
+            $value = maybe_serialize( $meta->value );
+            echo '<tr><th style="width:200px">' . $key . '</th><td>' . esc_html( $value ) . '</td></tr>';
+        }
+        echo '</tbody></table>';
     }
 }

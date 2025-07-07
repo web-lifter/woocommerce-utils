@@ -6,6 +6,7 @@
  * Author: Example Author
  * Text Domain: woocommerce-utils
  * Domain Path: /languages
+ * GitHub Plugin URI: https://github.com/example/woocommerce-utils
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,6 +23,12 @@ if ( ! defined( 'WC_UTILS_PATH' ) ) {
 if ( ! defined( 'WC_UTILS_URL' ) ) {
     define( 'WC_UTILS_URL', plugin_dir_url( __FILE__ ) );
 }
+if ( ! defined( 'WC_UTILS_REPO_RAW' ) ) {
+    define( 'WC_UTILS_REPO_RAW', 'https://raw.githubusercontent.com/example/woocommerce-utils/main/' );
+}
+if ( ! defined( 'WC_UTILS_REPO_ZIP' ) ) {
+    define( 'WC_UTILS_REPO_ZIP', 'https://github.com/example/woocommerce-utils/archive/refs/heads/main.zip' );
+}
 
 /**
  * Initialize the plugin.
@@ -36,10 +43,12 @@ function wc_utils_init() {
     // Include required files.
     require_once WC_UTILS_PATH . 'includes/class-wc-utils-admin.php';
     require_once WC_UTILS_PATH . 'includes/class-wc-utils-features.php';
+    require_once WC_UTILS_PATH . 'includes/class-wc-utils-updater.php';
 
     // Initialize classes.
     new WC_Utils_Admin();
     new WC_Utils_Features();
+    new WC_Utils_Updater( WC_UTILS_REPO_RAW, WC_UTILS_REPO_ZIP, plugin_basename( __FILE__ ), WC_UTILS_VERSION );
 }
 add_action( 'plugins_loaded', 'wc_utils_init' );
 
