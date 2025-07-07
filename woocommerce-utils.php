@@ -3,10 +3,10 @@
  * Plugin Name: WooCommerce Utils
  * Description: Provides helpful utilities for WooCommerce.
  * Version: 1.0.0
- * Author: Example Author
+ * Author: Web Lifter
  * Text Domain: woocommerce-utils
  * Domain Path: /languages
- * GitHub Plugin URI: https://github.com/example/woocommerce-utils
+ * GitHub Plugin URI: https://github.com/web-lifter/woocommerce-utils
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,10 +24,10 @@ if ( ! defined( 'WC_UTILS_URL' ) ) {
     define( 'WC_UTILS_URL', plugin_dir_url( __FILE__ ) );
 }
 if ( ! defined( 'WC_UTILS_REPO_RAW' ) ) {
-    define( 'WC_UTILS_REPO_RAW', 'https://raw.githubusercontent.com/example/woocommerce-utils/main/' );
+    define( 'WC_UTILS_REPO_RAW', 'https://raw.githubusercontent.com/web-lifter/woocommerce-utils/main/' );
 }
 if ( ! defined( 'WC_UTILS_REPO_ZIP' ) ) {
-    define( 'WC_UTILS_REPO_ZIP', 'https://github.com/example/woocommerce-utils/archive/refs/heads/main.zip' );
+    define( 'WC_UTILS_REPO_ZIP', 'https://github.com/web-lifter/woocommerce-utils/archive/refs/heads/main.zip' );
 }
 
 /**
